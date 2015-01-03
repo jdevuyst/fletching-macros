@@ -6,7 +6,7 @@ A collection of Clojure macros that complement the clojure.core threading (arrow
 
 To start, create a [Leiningen](http://leiningen.org) project and add the following dependency to `project.clj`:
 
-![Clojars Project](http://clojars.org/fletching-macros/latest-version.svg)
+![Clojars Project](https://clojars.org/fletching-macros/latest-version.svg)
 
 Next, load the macros as follows:
 
@@ -14,7 +14,7 @@ Next, load the macros as follows:
 (require '[fletching.macros :refer :all])
 ```
 
-## `>>`
+## The macro `>>`
 
 Removes itself from the head of the enclosing S-expression, and then moves the second form in the remaining expression to the end of the expression.
 
@@ -38,7 +38,7 @@ This can be rewritten as
 ;=> -4
 ```
 
-## `<<`
+## The macro `<<`
 
 Removes itself from the head of the enclosing S-expression, and then moves the last form in the expression to the second position.
 
@@ -89,7 +89,7 @@ Of course, `<<` is also useful in one-off situations:
 ;=> -2
 ```
 
-## `?>` and `<?`
+## The macros `?>` and `<?`
 
 Removes itself from the head of the enclosing S-expression, and then respectively removes the second (`?>`) or last (`<?`) form in the remaining expression and binds it to `?`.
 
@@ -104,7 +104,7 @@ These are useful when you're composing functions using `->` or `->>` and you fin
 ;=> ["6 is even" "6 is even"]
 ```
 
-## `><`
+## The macro `><`
 
 Removes itself from the head of the enclosing S-expression.
 
@@ -127,7 +127,7 @@ Similarly,
 ;=> 12
 ```
 
-## `<fn` and `<&fn`
+## The macros `<fn` and `<&fn`
 
 `<fn` removes itself from the head of the enclosing S-expression, and then inserts a variable in the second position of the remaining expression. Finally, the expression is transformed into a lambda, which binds the variable.
 
