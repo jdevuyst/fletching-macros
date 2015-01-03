@@ -16,7 +16,7 @@ Next, load the macros as follows:
 
 ## The macro `>>`
 
-Removes itself from the head of the enclosing S-expression, and then moves the second form in the remaining expression to the end of the expression.
+> Removes itself from the head of the enclosing S-expression, and then moves the second form in the remaining expression to the end of the expression.
 
 Intended to be used within `->` to switch to `->>` conventions.
 
@@ -40,9 +40,9 @@ This can be rewritten as
 
 ## The macro `<<`
 
-Removes itself from the head of the enclosing S-expression, and then moves the last form in the expression to the second position.
+> Removes itself from the head of the enclosing S-expression, and then moves the last form in the expression to the second position.
 
-It's not possible to nest `->` within `->>`. This macro addresses this problem.
+This macro addresses the problem of nesting `->` within `->>`.
 
 Working around this composition problem using `clojure.core` macros was already possible, but not always very elegant. You might have been writing code like this:
 
@@ -91,9 +91,9 @@ Of course, `<<` is also useful in one-off situations:
 
 ## The macros `?>` and `<?`
 
-Removes itself from the head of the enclosing S-expression, and then respectively removes the second (`?>`) or last (`<?`) form in the remaining expression and binds it to `?`.
+> Remove themselves from the head of the enclosing S-expression, and then respectively remove the second (`?>`) or last (`<?`) form in the remaining expression and bind it to `?`.
 
-These are useful when you're composing functions using `->` or `->>` and you find yourself needing a little bit more flexibility for one of the threaded expressions.
+These macros are useful when you're composing functions using `->` or `->>` and you find yourself needing a little bit more flexibility for some of the threaded expressions.
 
 ```clojure
 (->> [1 2 3 4 5]
@@ -106,7 +106,7 @@ These are useful when you're composing functions using `->` or `->>` and you fin
 
 ## The macro `><`
 
-Removes itself from the head of the enclosing S-expression.
+> Removes itself from the head of the enclosing S-expression.
 
 This macro is useful when you want to thread functions (as opposed to function arguments):
 
@@ -118,7 +118,7 @@ This macro is useful when you want to thread functions (as opposed to function a
 ;=> 13
 ```
 
-Similarly,
+Equivalently,
 
 ```clojure
 (->> [+ - * /]
@@ -131,9 +131,9 @@ Similarly,
 
 ## The macros `<fn` and `<&fn`
 
-`<fn` removes itself from the head of the enclosing S-expression, and then inserts a variable in the second position of the remaining expression. Finally, the expression is transformed into a 1-ary lambda, which binds the variable.
+> `<fn` removes itself from the head of the enclosing S-expression, and then inserts a variable in the second position of the remaining expression. Finally, the expression is transformed into a 1-ary lambda, which binds the variable.
 
-The macros `<fn` and `<&fn` in combination with `->`, `->>`, `as->`, and other threading macros afford point-free definitions of functions:
+When combined with `->` and `->>`, `<fn` and `<&fn` afford point-free definitions of functions:
 
 ```clojure
 (def f (<fn ->> (map -)
