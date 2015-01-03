@@ -1,6 +1,6 @@
 # Fletching macros
 
-A collection of Clojure macros that complement the clojure.core threading (arrow) macros `->` and `->>`.
+A collection of Clojure macros that complement the `clojure.core` threading macros `->` and `->>`.
 
 ## Setup
 
@@ -114,8 +114,8 @@ This macro is useful when you want to thread functions (as opposed to function a
 (-> [+ - * /]
     (nth 2)
     (>< 3 4)
-    -)
-;=> -12
+    inc)
+;=> 13
 ```
 
 Similarly,
@@ -125,15 +125,15 @@ Similarly,
      (drop 2)
      first
      (<< >< 3 4)
-     -)
-;=> -12
+     inc)
+;=> 13
 ```
 
 ## The macros `<fn` and `<&fn`
 
 `<fn` removes itself from the head of the enclosing S-expression, and then inserts a variable in the second position of the remaining expression. Finally, the expression is transformed into a 1-ary lambda, which binds the variable.
 
-More simply, this macro helps you transform `->`, `->>`, `as->`, and other threading macros into functions.
+The macros `<fn` and `<&fn` in combination with `->`, `->>`, `as->`, and other threading macros afford point-free definitions of functions:
 
 ```clojure
 (def f (<fn ->> (map -)

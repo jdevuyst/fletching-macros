@@ -124,22 +124,20 @@
     (is (= (-> [+ - * /]
                (nth 2)
                (>< 3 4)
-               -)
+               inc)
            (->> [+ - * /]
                 (drop 2)
                 first
                 (<< >< 3 4)
-                -)
-           -12)))
+                inc)
+           13)))
   (testing "<fn and <&fn"
-    (is (= (let [f (<fn ->>
-                        (map -)
-                        (filter even?)
-                        (reduce *))]
+    (is (= (let [f (<fn ->> (map -)
+                        ,   (filter even?)
+                        ,   (reduce *))]
              (f [2 4 5 6]))
-           (let [g (<&fn ->>
-                         (map -)
-                         (filter even?)
-                         (reduce *))]
+           (let [g (<&fn ->> (map -)
+                         ,   (filter even?)
+                         ,   (reduce *))]
              (g 2 4 5 6))
            -48))))

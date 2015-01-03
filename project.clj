@@ -1,4 +1,4 @@
-(defproject fletching-macros "0.9"
+(defproject fletching-macros "0.9.1-SNAPSHOT"
   :description "Clojure macros that complement the clojure.core threading (arrow) macros"
   :url "https://github.com/jdevuyst/fletching-macros"
   :license {:name "Eclipse Public License"
