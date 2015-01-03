@@ -99,8 +99,8 @@ These are useful when you're composing functions using `->` or `->>` and you fin
 (->> [1 2 3 4 5]
      (take 3)
      (reduce *)
-     (&lt;? str ? " is " (if (even? ?) "even" "odd"))
-     (&lt;? do [? ?]))
+     (<? str ? " is " (if (even? ?) "even" "odd"))
+     (<? do [? ?]))
 ;=> ["6 is even" "6 is even"]
 ```
 
