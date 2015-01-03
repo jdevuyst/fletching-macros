@@ -113,8 +113,9 @@ This macro is useful when you want to thread functions (as opposed to function a
 ```clojure
 (-> [+ - * /]
     (nth 2)
-    (>< 3 4))
-;=> 12
+    (>< 3 4)
+    -)
+;=> -12
 ```
 
 Similarly,
@@ -123,8 +124,9 @@ Similarly,
 (->> [+ - * /]
      (drop 2)
      first
-     (<< >< 3 4))
-;=> 12
+     (<< >< 3 4)
+     -)
+;=> -12
 ```
 
 ## The macros `<fn` and `<&fn`
