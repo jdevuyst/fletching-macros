@@ -30,13 +30,13 @@
 (defmacro <fn [& forms]
   "Removes itself from the head of the enclosing S-expression, and then inserts
   a variable in the second position of the remaining expression. Finally, the
-  expression is transformed into a lambda, which binds the variable."
+  expression is transformed into a 1-ary lambda, which binds the variable."
   `(fn [x#]
      (~@(take 1 forms) x# ~@(next forms))))
 
 (defmacro <&fn [& forms]
   "Removes itself from the head of the enclosing S-expression, and then inserts
   a variable in the second position of the remaining expression. Finally, the
-  expression is transformed into a lambda, which binds the variable."
+  expression is transformed into a variadic lambda, which binds the variable."
   `(fn [& xs#]
      (~@(take 1 forms) xs# ~@(next forms))))

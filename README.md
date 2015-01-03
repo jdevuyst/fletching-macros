@@ -131,7 +131,7 @@ Similarly,
 
 ## The macros `<fn` and `<&fn`
 
-`<fn` removes itself from the head of the enclosing S-expression, and then inserts a variable in the second position of the remaining expression. Finally, the expression is transformed into a lambda, which binds the variable.
+`<fn` removes itself from the head of the enclosing S-expression, and then inserts a variable in the second position of the remaining expression. Finally, the expression is transformed into a 1-ary lambda, which binds the variable.
 
 More simply, this macro helps you transform `->`, `->>`, `as->`, and other threading macros into functions.
 
