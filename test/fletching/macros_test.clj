@@ -46,6 +46,9 @@
          ((<fn / 5 3) 7) (/ 7 5 3)))
   (testing "<&fn"
     (are [x y] (= x y)
+         :fail (try
+                 (macroexpand '(<&fn))
+                 (catch clojure.lang.ArityException ex :fail))
          ((<&fn first) 1 2 3) 1
          ((<&fn nth 2) 4 5 6 7) 6)))
 
