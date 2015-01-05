@@ -14,9 +14,9 @@ Next, load the macros as follows:
 (require '[fletching.macros :refer :all])
 ```
 
-## The macro `>>`
+## `>>`
 
-> Removes itself from the head of the enclosing S-expression, and then moves the second form in the remaining expression to the end of the expression.
+> The macro `>>` removes itself from the head of the enclosing S-expression, and then moves the second form in the remaining expression to the end of the expression.
 
 Intended to be used within `->` to switch to `->>` conventions.
 
@@ -38,9 +38,9 @@ This can be rewritten as
 ;=> -4
 ```
 
-## The macro `<<`
+## `<<`
 
-> Removes itself from the head of the enclosing S-expression, and then moves the last form in the expression to the second position.
+> The macro `<<` removes itself from the head of the enclosing S-expression, and then moves the last form in the expression to the second position.
 
 This macro addresses the problem of nesting `->` within `->>`.
 
@@ -89,9 +89,9 @@ Of course, `<<` is also useful in one-off situations:
 ;=> -2
 ```
 
-## The macros `?>` and `<?`
+## `?>`, `<?`
 
-> Remove themselves from the head of the enclosing S-expression, and then respectively remove the second (`?>`) or last (`<?`) form in the remaining expression and bind it to `?`.
+> The macros `?>` and `<?` remove themselves from the head of the enclosing S-expression, and then remove the second (`?>`) or last (`<?`) form in the remaining expression and bind it to `?`.
 
 These macros are useful when you're composing functions using `->` or `->>` and you find yourself needing a little bit more flexibility for some of the threaded expressions.
 
@@ -104,9 +104,9 @@ These macros are useful when you're composing functions using `->` or `->>` and 
 ;=> ["6 is even" "6 is even"]
 ```
 
-## The macro `><`
+## `><`
 
-> Removes itself from the head of the enclosing S-expression.
+> The macro `><` removes itself from the head of the enclosing S-expression.
 
 This macro is useful when you want to thread functions (as opposed to function arguments):
 
@@ -129,11 +129,11 @@ Equivalently,
 ;=> 13
 ```
 
-## The macros `<fn` and `<&fn`
+## `<fn`, `<&fn`
 
-> `<fn` removes itself from the head of the enclosing S-expression, and then inserts a variable in the second position of the remaining expression. Finally, the expression is transformed into a 1-ary lambda, which binds the variable.
+> The macros `<fn` and `<&fn` remove themselves from the head of the enclosing S-expression, and then insert a variable in the second position of the remaining expression. Finally, the expression is transformed into a 1-ary (`<fn`) or variadic (`<&fn`) lambda, which binds the variable.
 
-When combined with `->` and `->>`, `<fn` and `<&fn` afford point-free definitions of functions:
+`<fn` and `<&fn` can be used for defining functions in a [point-free style](https://en.wikipedia.org/wiki/Point-free_programming):
 
 ```clojure
 (def f (<fn ->> (map -)
